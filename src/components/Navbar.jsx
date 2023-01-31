@@ -1,26 +1,32 @@
+import { NavLink } from "react-router-dom";
+import { useCartContext } from "../context/CartContext";
+import { formatPrice } from "../utils/formatPrice";
+
 export default function Navbar() {
+  const { totalCart } = useCartContext();
+
   return (
     <nav className="navbar navbar-dark bg-dark">
       <div className="container">
-        <a
+        <NavLink
           className="navbar-brand"
-          href="/"
+          to="/"
         >
           MamaMía 😋
-        </a>
+        </NavLink>
         <div className="d-flex gap-2">
-          <a
+          <NavLink
             className="btn btn-outline-light"
-            href="/pizzas"
+            to="/pizzas"
           >
             Pizzas
-          </a>
-          <a
+          </NavLink>
+          <NavLink
             className="btn btn-outline-info me-2"
-            href="/cart"
+            to="/cart"
           >
-            Cart: $3.99
-          </a>
+            Cart: ${formatPrice(totalCart())}
+          </NavLink>
         </div>
       </div>
     </nav>
