@@ -1,6 +1,10 @@
+import { Notyf } from "notyf";
+import "notyf/notyf.min.css";
 import { createContext, useContext, useState } from "react";
 
 export const CartContext = createContext();
+
+const notyf = new Notyf();
 
 export default function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
@@ -14,6 +18,7 @@ export default function CartProvider({ children }) {
     } else {
       setCart([...cart, { ...item, count: 1 }]);
     }
+    notyf.success("Se ha agregado el producto al carrito");
   };
 
   const removeItem = (item) => {
@@ -25,6 +30,7 @@ export default function CartProvider({ children }) {
         cart.map((i) => (i.id === item.id ? { ...i, count: i.count - 1 } : i))
       );
     }
+    notyf.error("Se ha eliminado el producto del carrito");
   };
 
   const totalCart = () => {
