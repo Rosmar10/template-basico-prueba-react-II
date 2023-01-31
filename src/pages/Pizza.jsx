@@ -31,7 +31,7 @@ export default function Pizza() {
       <div className="row g-0">
         <div className="col-md-4">
           <img
-            src="https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fpizza-1239077_640_cl.jpg?alt=media&token=6a9a33da-5c00-49d4-9080-784dcc87ec2c"
+            src={pizza.img}
             className="img-fluid rounded-start h-100"
             alt="..."
           />
