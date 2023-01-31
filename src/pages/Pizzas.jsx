@@ -5,7 +5,7 @@ export default function Pizzas() {
   const [pizzas, setPizzas] = useState([]);
 
   useEffect(() => {
-    fetch("pizzas.json")
+    fetch("/pizzas.json")
       .then((response) => response.json())
       .then((data) => setPizzas(data));
   }, []);

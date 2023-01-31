@@ -34,12 +34,12 @@ export default function Card({ item }) {
             >
               Comprar
             </Link>
-            <a
-              href="/pizzas/1"
+            <Link
+              to={`/pizzas/${item.id}`}
               className="btn btn-outline-danger"
             >
               Ver detalles
-            </a>
+            </Link>
           </div>
         </div>
       </div>
