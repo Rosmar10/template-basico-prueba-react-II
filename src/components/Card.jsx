@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import Pizza from "../pages/Pizza";
+import Pizzas from "../pages/Pizzas";
 import Boton from "./Boton";
 
 
 
-export default function Card() {
+export default function Card(pizza) {
   return (
     <article className="mb-2 col-12 col-md-6 col-xl-3">
       <div className="card">
@@ -19,7 +20,7 @@ export default function Card() {
           </h2>
           <h6>Ingrediente</h6>
           <ul>
-            {Pizza.item.ingredientes.map((item) => (
+            {Pizza.item.ingredients.map((item) => (
               <li key={item}>{item}</li>
             ))}
           </ul>
@@ -29,7 +30,7 @@ export default function Card() {
           <div className="d-flex gap-2">
             <Boton pizza={pizza.item} />
             <Link
-              to={`/pizzas.item.id`}
+              to={`/pizzas/${pizza.item.id}`}
               className="btn btn-outline-danger"
             >
               Ver detalles

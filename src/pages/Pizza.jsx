@@ -1,32 +1,68 @@
+import { useNavigate, useParams } from "react-router-dom";
+import { usePizzasContext } from "../context/PizzasContext";
+import Boton from "../components/Boton";
+
+
+
 export default function Pizza() {
+
+  const { pizzas } = usePizzasContext()
+
+  const params = useParams()
+  const navigate = useNavigate()
+  if (!pizzas) return <h1>loading...</h1>
+
+
   return (
-    <div className="card mb-3 mt-5">
-      <div className="row g-0">
-        <div className="col-md-4">
-          <img
-            src="https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fpizza-1239077_640_cl.jpg?alt=media&token=6a9a33da-5c00-49d4-9080-784dcc87ec2c"
-            className="img-fluid rounded-start h-100"
-            alt="..."
-          />
-        </div>
-        <div className="col-md-8">
-          <div className="card-body">
-            <h5 className="fs-1">Card title</h5>
-            <p className="card-text">
-              La pizza napolitana, de masa tierna y delgada pero bordes altos,
-              es la versión propia de la cocina napolitana de la pizza redonda.
-              El término pizza napoletana, por su importancia histórica o
-              regional, se emplea en algunas zonas como sinónimo de pizza tonda.
-            </p>
-            <p className="card-text">
-              <small className="text-muted">
-                mozzarella, tomates, jamón y orégano
-              </small>
-            </p>
-            <div className="btn btn-outline-primary">Comprar</div>
+    <>
+      {pizzas.map((item) => {
+        return (
+          <div key={item.id}>
+            {
+              item.id == params.id ?
+                <div className="card mb-3 mt-5">
+                  <div className="row g-0">
+                    <div className="col-md-4">
+                      <img
+                        src={item.img}
+                        className="img-fluid rounded-start h-100"
+                        alt="..."
+                      />
+                    </div>
+                    <div className="col-md-8">
+                      <div className="card-body">
+                        <h5 className="fs-1">{item.name[0].toUpperCase()}{item.name.substring(1)}</h5>
+                        <p className="card-text">
+                          {item.desc}
+                        </p>
+
+
+                        <ul className="card-text">
+                          <small className="text-muted">
+                            {
+                              item.ingredients.map((ingredient) => <li className="ingredientesPizzas" key={ingredient}>{ }ingredient</li>)
+                            }
+                          </small>
+                        </ul>
+                        <Boton pizza={item} />
+                        <button className="btn btn-outline-primary ms-2" onClick={() => navigate('/pizzas')}>Comprar</button>
+                        <h3>Precio: ${item.price}</h3>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                : null
+
+            }
           </div>
-        </div>
-      </div>
-    </div>
+
+
+        )
+
+      })}
+
+    </>
+
   );
 }
