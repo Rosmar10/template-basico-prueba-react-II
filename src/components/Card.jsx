@@ -1,39 +1,39 @@
+import { Link } from "react-router-dom";
+import Pizza from "../pages/Pizza";
+import Boton from "./Boton";
+
+
+
 export default function Card() {
   return (
     <article className="mb-2 col-12 col-md-6 col-xl-3">
       <div className="card">
         <img
-          src="https://firebasestorage.googleapis.com/v0/b/apis-varias-mias.appspot.com/o/pizzeria%2Fpizza-1239077_640_cl.jpg?alt=media&token=6a9a33da-5c00-49d4-9080-784dcc87ec2c"
+          src={Pizza.item.img}
           className="card-img-top"
           alt="card description"
         />
         <div className="card-body">
           <h2>
-            <b>Pizza Napolitana</b>
+            <b>{Pizza.item.name[0].toUpperCase()}{Pizza.item.name.substring(1)}</b>
           </h2>
           <h6>Ingrediente</h6>
           <ul>
-            <li>Mozzarella</li>
-            <li>Tomate</li>
-            <li>Orégano</li>
-            <li>Jamón</li>
+            {Pizza.item.ingredientes.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
           <h5>
-            <b>Precio: $5.950</b>
+            <b>Precio:${Pizza.item.price}</b>
           </h5>
           <div className="d-flex gap-2">
-            <a
-              href="/cart"
-              className="btn btn-outline-primary"
-            >
-              Comprar
-            </a>
-            <a
-              href="/pizzas/1"
+            <Boton pizza={pizza.item} />
+            <Link
+              to={`/pizzas.item.id`}
               className="btn btn-outline-danger"
             >
               Ver detalles
-            </a>
+            </Link>
           </div>
         </div>
       </div>

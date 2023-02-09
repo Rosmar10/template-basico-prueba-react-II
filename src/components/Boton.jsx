@@ -2,7 +2,7 @@ import { Button } from "react-bootstrap"
 import { useCartContext } from "../context/CartContext"
 
 
-export default function Button({ pizza }) {
+export default function Boton({ pizza }) {
     const { addMenu } = useCartContext()
 
     return (

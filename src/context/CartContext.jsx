@@ -4,7 +4,7 @@ import React, { createContext, useState } from 'react'
 
 const CartContext = createContext()
 
-export default function CartContext({ children }) {
+export default function CartProvider({ children }) {
     const [menu, setMenu] = useState([])
     const [sumar, setSumar] = useState(0)
 

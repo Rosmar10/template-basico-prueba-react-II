@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react"
 
 export const PizzasContext = createContext()
 
-export default function PizzasContext({ children }) {
+export default function PizzasProvider({ children }) {
 
     const [pizzas, setPizzas] = useState(null)
 
